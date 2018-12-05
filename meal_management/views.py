@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 
 def home(request):
-    return render(request, 'meal_management/index.html', {'title': 'Hello'})
+    return render(request, 'meal_management/index.html', {'title': 'Meal Manager'})
 
 
 def new_meal_group(request):
