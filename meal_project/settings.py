@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'meal_management.apps.MealManagementConfig',
+    'frontends.apps.MealManagementConfig',
     'users.apps.UsersConfig'
 ]
 
