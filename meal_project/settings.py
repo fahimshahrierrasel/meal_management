@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'frontends.apps.MealManagementConfig',
-    'users.apps.UsersConfig'
+    'users.apps.UsersConfig',
+    'meal_managements.apps.MealManagementsConfig',
 ]
 
 MIDDLEWARE = [
