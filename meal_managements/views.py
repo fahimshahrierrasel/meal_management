@@ -2,4 +2,4 @@ from django.shortcuts import render
 
 
 def dashboard(request):
-    return render(request, 'meal_managements/dashboard.html')
+    return render(request, 'meal_managements/dashboard.html', {'title': 'Dashboard'})
