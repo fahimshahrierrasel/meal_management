@@ -1,6 +1,5 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
-
 from .forms import UserRegistrationForm
 
 
@@ -15,7 +14,4 @@ def register(request):
     else:
         form = UserRegistrationForm()
 
-    return render(request, 'users/register.html', {'form': form})
-
-
-
+    return render(request, 'users/register.html', {'title': 'Register', 'form': form})
