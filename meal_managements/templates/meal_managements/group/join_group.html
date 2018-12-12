@@ -1,0 +1,14 @@
+{% extends 'frontends/base.html' %}
+{% block content %}
+    <div class="container mt-5" style="width: 500px">
+        <h4>{{ title }}</h4>
+        <hr/>
+        <form>
+            <div class="form-group">
+                <label for="name">Unique Group ID (<small class="text-info">Ask group captain about unique group id</small>)</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Unique Group ID">
+            </div>
+            <button type="submit" class="btn btn-primary float-right m-1">Join Group</button>
+        </form>
+    </div>
+{% endblock %}
