@@ -1,18 +1,19 @@
 {% extends 'frontends/base.html' %}
 {% block content %}
-    <div class="container mt-5">
+    <div class="container mt-5" style="width: 500px">
         <h4>{{ title }}</h4>
         <hr/>
         <form>
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Name...">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Group Name">
             </div>
             <div class="form-group">
-                <label for="address">Address 2</label>
-                <textarea class="form-control" form="address"></textarea>
+                <label for="address">Address</label>
+                <textarea class="form-control" form="address" placeholder="Group Address"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Create Group</button>
+            <small>You will be captain of the group but you can change this later.</small>
+            <button type="submit" class="btn btn-primary float-right m-1">Create Group</button>
         </form>
     </div>
 {% endblock %}
