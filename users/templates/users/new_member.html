@@ -1,0 +1,30 @@
+{% extends 'frontends/base.html' %}
+{% block content %}
+    <div class="container mt-5" style="width: 500px">
+        <h4>{{ title }}</h4>
+        <hr/>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" class="form-control" id="name" name="name" required placeholder="Your Full Name"
+                       value="{{ user.first_name }} {{ user.last_name }}">
+            </div>
+            <div class="form-group">
+                <label for="mobile_number">Mobile Number *</label>
+                <input type="text" class="form-control" id="mobile_number" name="mobile_number" required
+                       placeholder="Mobile Number">
+            </div>
+            <div class="form-group">
+                <label for="address">Your Address *</label>
+                <textarea class="form-control" id="address" name="address" required="required" placeholder="Your Address"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="emergency_contact">Emergency Contact Number *</label>
+                <input type="text" class="form-control" id="emergency_contact" name="emergency_contact" required
+                       placeholder="Emergency Contact Number">
+            </div>
+            <button type="submit" class="btn btn-primary float-right m-1">Submit</button>
+        </form>
+    </div>
+{% endblock %}

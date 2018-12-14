@@ -1,5 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
+from users.models import Membership, Member
 
 
 @login_required
@@ -19,4 +21,12 @@ def join_group(request):
 
 @login_required
 def dashboard(request):
-    return render(request, 'meal_managements/dashboard.html', {'title': 'Dashboard'})
+    user = request.user
+    member = Member.objects.filter(user=user).first()
+    membership = Membership.objects.filter(member=member).first()
+    if not member:
+        return redirect('new_member')
+    elif not membership:
+        return redirect('select_group')
+    else:
+        return render(request, 'meal_managements/dashboard.html', {'title': 'Dashboard'})

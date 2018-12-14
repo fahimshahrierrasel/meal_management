@@ -13,5 +13,7 @@ urlpatterns = [
         template_name='users/logout.html',
         extra_context={'title': 'Logout'}), name='logout'),
 
+    path('new-member', views.new_member, name='new_member'),
+
     path('<slug:slug>/profile', views.profile, name='profile'),
 ]
