@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
-from users.models import Membership, Member
+from users.models import Membership, Member, Group
 
 
 @login_required
@@ -11,6 +11,25 @@ def select_group(request):
 
 @login_required
 def create_group(request):
+    if request.POST:
+        member = Member.objects.filter(user=request.user).first()
+        name = request.POST['name']
+        address = request.POST['address']
+
+        group = Group.objects.create(
+            name=name,
+            address=address,
+            captain=member
+        )
+
+        Membership.objects.create(
+            member=member,
+            group=group,
+            status=True
+        )
+
+        return redirect('dashboard')
+
     return render(request, 'meal_managements/group/create_group.html', {'title': 'Create Group'})
 
 

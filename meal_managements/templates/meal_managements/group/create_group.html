@@ -3,14 +3,15 @@
     <div class="container mt-5" style="width: 500px">
         <h4>{{ title }}</h4>
         <hr/>
-        <form>
+        <form method="POST">
+            {% csrf_token %}
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="Group Name">
             </div>
             <div class="form-group">
                 <label for="address">Address</label>
-                <textarea class="form-control" form="address" placeholder="Group Address"></textarea>
+                <textarea class="form-control" id="address" name="address" placeholder="Group Address"></textarea>
             </div>
             <small>You will be captain of the group but you can change this later.</small>
             <button type="submit" class="btn btn-primary float-right m-1">Create Group</button>
