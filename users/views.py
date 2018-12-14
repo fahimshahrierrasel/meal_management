@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
+from django.contrib.auth.views import UserModel
 from .forms import UserRegistrationForm
 
 
@@ -15,3 +16,12 @@ def register(request):
         form = UserRegistrationForm()
 
     return render(request, 'users/register.html', {'title': 'Register', 'form': form})
+
+
+def profile(request, slug):
+    user = UserModel.objects.filter(username=slug).get()
+    data = {
+        'title': f"{slug}'s Profile",
+        'user': user
+    }
+    return render(request, 'users/profile.html', context=data)

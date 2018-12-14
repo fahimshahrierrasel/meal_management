@@ -1,10 +1,29 @@
 {% extends 'frontends/base.html' %}
 
 {% block content %}
-    <h2>You have been logged out</h2>
-    <div class="border-top pt-3">
-        <small class="text-muted">
-            <a class="ml-2" href="{% url 'login' %}">Login Again</a>
-        </small>
+    <div class="container mt-4">
+        <h2>You have been logged out</h2>
+
+        <div class="border-top pt-3">
+
+            <h5>Redirecting to login page in <span id="counter">5</span> seconds</h5>
+
+
+            <a class="btn btn-primary mt-2" href="{% url 'login' %}">Login Again</a>
+
+        </div>
     </div>
+{% endblock %}
+
+{% block custom_script %}
+    <script>
+        let counterLabel = $('#counter');
+        setInterval(function () {
+            let counter = counterLabel.text() * 1 - 1;
+            counterLabel.text(counter);
+            if(counter <= 0){
+                window.location = '{% url 'login' %}';
+            }
+        }, 1000);
+    </script>
 {% endblock %}

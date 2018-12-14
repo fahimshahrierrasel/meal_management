@@ -1,0 +1,28 @@
+{% extends 'meal_managements/base.html' %}
+{% block content %}
+    <div class="card bg-light mb-3">
+        <div class="card-header">User Info</div>
+        <div class="card-body">
+            <table class="table table-borderless">
+                <tbody>
+                <tr>
+                    <td width="150px">First Name</td>
+                    <td>{{ user.first_name }}</td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td>{{ user.last_name }}</td>
+                </tr>
+                <tr>
+                    <td>Username</td>
+                    <td>{{ user.username }}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>{{ user.email }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

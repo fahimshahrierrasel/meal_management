@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{% static 'frontends/style.css' %}">
     <title>{{ title }}</title>
 </head>
-<body>
+<body style="min-height: 100vh; position: relative;">
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="#"><strong>Meal Manager</strong></a>
@@ -30,12 +30,23 @@
                     <a class="nav-link" href="#">My Group</a>
                 </li>
             </ul>
-            <div class="mt-2 mt-md-0">
-                {% if user.is_authenticated %}
-                    <a class="my-2 text-white my-sm-0" href="{% url 'login' %}">Profile</a>
-                    <a class="my-2 text-white my-sm-0" href="{% url 'login' %}">Setting</a>
-                {% endif %}
-            </div>
+
+            {% if user.is_authenticated %}
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary">{{ user.email }}</button>
+                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            data-reference="parent">
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="{% url 'profile' slug=user.username %}">Profile</a>
+                        <a class="dropdown-item" href="#">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                    </div>
+                </div>
+
+            {% endif %}
         </div>
     </nav>
 </header>
@@ -46,7 +57,7 @@
         </div>
         <div class="row">
             <div class="col-md-2">
-                <div class="list-group accordion mt-5">
+                <div class="list-group accordion mt-1">
                     <a href="{% url 'dashboard' %}" class="list-group-item list-group-item-action">
                         Dashboard
                     </a>
@@ -97,7 +108,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-7 p-3">
                 {% block content %}
                 {% endblock %}
             </div>
@@ -139,8 +150,7 @@
         </div>
     </div>
     <!-- FOOTER -->
-    <footer class="container footer-bottom">
-        <p class="float-right"><a href="#">Back to top</a></p>
+    <footer class="container text-center" style="position: absolute; bottom: 0;">
         <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
     </footer>
 </main>
