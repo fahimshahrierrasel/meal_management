@@ -1,3 +1,4 @@
+import uuid as uuid
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
@@ -16,6 +17,7 @@ class Member(models.Model):
 
 
 class Group(models.Model):
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     name = models.CharField(max_length=200)
     address = models.TextField()
     captain = models.ForeignKey(Member, null=True, on_delete=models.SET_NULL)

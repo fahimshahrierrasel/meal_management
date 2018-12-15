@@ -68,7 +68,8 @@
                         </div>
                         <div class="collapse" id="collapseOne">
                             <a href="#" class="list-group-item text-white bg-dark list-group-item-action">Add Member</a>
-                            <a href="#" class="list-group-item text-white bg-dark list-group-item-action">All
+                            <a href="{% url 'group_members' slug=current_group.uuid %}"
+                               class="list-group-item text-white bg-dark list-group-item-action">All
                                 Members</a>
                         </div>
                     </div>

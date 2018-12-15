@@ -49,3 +49,15 @@ def dashboard(request):
         return redirect('select_group')
     else:
         return render(request, 'meal_managements/dashboard.html', {'title': 'Dashboard'})
+
+
+@login_required
+def group_members(request, slug):
+    group = Group.objects.filter(uuid=slug).first()
+    memberships = Membership.objects.filter(group=group).all()
+
+    data = {
+        'title': f"{group.name}'s Members",
+        'memberships': memberships
+    }
+    return render(request, 'meal_managements/member/members.html', context=data)

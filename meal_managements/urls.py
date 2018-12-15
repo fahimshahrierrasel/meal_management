@@ -6,4 +6,5 @@ urlpatterns = [
     path('create-group', views.create_group, name='create_group'),
     path('join-group', views.join_group, name='join_group'),
     path('dashboard', views.dashboard, name='dashboard'),
+    path('<slug:slug>/members', views.group_members, name='group_members'),
 ]

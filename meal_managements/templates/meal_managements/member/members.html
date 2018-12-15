@@ -1,0 +1,29 @@
+{% extends 'meal_managements/base.html' %}
+
+{% block content %}
+    <div class="card bg-light mb-3">
+        <div class="card-header">Members</div>
+        <div class="card-body">
+            <table class="table table-bordered table-hover">
+                <thead class="thead_light">
+                <tr>
+                    <th>Name</th>
+                    <th>Mobile Number</th>
+                    <th>Address</th>
+                    <th>Joined Since</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for membership in memberships %}
+                    <tr>
+                        <td>{{ membership.member.name }}</td>
+                        <td>{{ membership.member.mobile_number }}</td>
+                        <td>{{ membership.member.address }}</td>
+                        <td>{{ membership.date_joined|date:'b d, Y' }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
