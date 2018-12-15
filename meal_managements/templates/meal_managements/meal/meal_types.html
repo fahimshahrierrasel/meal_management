@@ -1,0 +1,60 @@
+{% extends 'meal_managements/base.html' %}
+
+{% block content %}
+    <div class="card bg-light mb-3">
+        <div class="card-header">Types
+            <button type="button" class="btn btn-primary float-right" data-toggle="modal"
+                    data-target="#exampleModalCenter">
+                New Type
+            </button>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-hover">
+                <thead class="thead_light">
+                <tr>
+                    <th>Name</th>
+                    <th>Meal Count</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for meal_type in meal_types %}
+                    <tr>
+                        <td>{{ meal_type.name }}</td>
+                        <td>{{ meal_type.count }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">New Type</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required placeholder="Meal Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="count">Meal Count</label>
+                            <input type="number" class="form-control" id="count" name="count" min="0.5" step="0.5"
+                                   value="1">
+                        </div>
+                        <button type="submit" class="btn btn-primary float-right m-1">Add Type</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

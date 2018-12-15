@@ -8,4 +8,5 @@ urlpatterns = [
     path('dashboard', views.dashboard, name='dashboard'),
     path('<slug:slug>/members', views.group_members, name='group_members'),
     path('<slug:slug>/info', views.group_info, name='group_info'),
+    path('<slug:slug>/meal-types', views.meal_types, name='meal_types'),
 ]

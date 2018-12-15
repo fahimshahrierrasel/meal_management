@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
+from .models import MealType
 from users.models import Membership, Member, Group
 
 
@@ -73,3 +74,26 @@ def group_info(request, slug):
         'total_members': total_members
     }
     return render(request, 'meal_managements/group/group_info.html', context=data)
+
+
+@login_required
+def meal_types(request, slug):
+    group = Group.objects.filter(uuid=slug).first()
+    if request.POST:
+        name = request.POST['name']
+        count = request.POST['count']
+
+        MealType.objects.create(
+            name=name,
+            count=count,
+            group=group
+        )
+
+        return redirect('meal_types', slug=group.uuid)
+
+    types = MealType.objects.filter(group=group).all()
+    data = {
+        'title': f"{group.name}'s Meal Types",
+        'meal_types': types
+    }
+    return render(request, 'meal_managements/meal/meal_types.html', context=data)

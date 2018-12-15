@@ -105,7 +105,7 @@
                         </div>
                         <div class="collapse" id="collapseFour">
                             <a href="{% url 'group_info' slug=current_group.uuid %}" class="list-group-item text-white bg-dark list-group-item-action">Group Info</a>
-                            <a href="#" class="list-group-item text-white bg-dark list-group-item-action">Meal Types</a>
+                            <a href="{% url 'meal_types' slug=current_group.uuid %}" class="list-group-item text-white bg-dark list-group-item-action">Meal Types</a>
                         </div>
                     </div>
                 </div>
