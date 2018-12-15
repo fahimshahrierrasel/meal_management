@@ -61,3 +61,15 @@ def group_members(request, slug):
         'memberships': memberships
     }
     return render(request, 'meal_managements/member/members.html', context=data)
+
+
+@login_required
+def group_info(request, slug):
+    group = Group.objects.filter(uuid=slug).first()
+    total_members = Membership.objects.filter(group=group).all().count()
+    data = {
+        'title': f"{group.name}'s Info",
+        'group': group,
+        'total_members': total_members
+    }
+    return render(request, 'meal_managements/group/group_info.html', context=data)
